@@ -7,7 +7,7 @@ Projeto desenvolvido para a atividade da disciplina **GAC116 - Programação Web
   "nome": "Campo Minado",
   "descricao": "Jogo de Campo Minado desenvolvido com HTML, CSS e JavaScript puro.",
   "autores": "Arthur Soares Marques",
-  "turma": "PREENCHER"
+  "turma": "14B"
 }
 ```
 
