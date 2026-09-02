@@ -1,0 +1,295 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: #f8fafc;
+    color: #1e293b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Container Principal */
+.app-container {
+    width: 440px;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    padding: 24px;
+    position: relative;
+}
+
+/* Gerenciamento de Telas */
+.screen {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.screen.active {
+    display: flex;
+}
+
+/* Tela Inicial */
+.game-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 8px;
+}
+
+.game-subtitle {
+    font-size: 0.95rem;
+    color: #64748b;
+    margin-bottom: 24px;
+}
+
+.instructions-box {
+    margin-top: 24px;
+    background-color: #f1f5f9;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: left;
+    width: 100%;
+    font-size: 0.875rem;
+    color: #475569;
+    line-height: 1.5;
+}
+
+.instructions-box p {
+    margin-bottom: 6px;
+}
+
+.instructions-box p:last-child {
+    margin-bottom: 0;
+}
+
+/* Botoes */
+.btn {
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 10px 24px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-primary {
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: #1d4ed8;
+}
+
+.btn-secondary {
+    background-color: #f1f5f9;
+    color: #475569;
+    border: 1px solid #cbd5e1;
+}
+
+.btn-secondary:hover {
+    background-color: #e2e8f0;
+    color: #1e293b;
+}
+
+/* Header e HUD de Jogo */
+.game-header {
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.header-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 12px;
+}
+
+.hud {
+    display: flex;
+    justify-content: space-around;
+    background-color: #f1f5f9;
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.hud-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #334155;
+}
+
+.hud-icon {
+    font-size: 1.1rem;
+}
+
+/* Tabuleiro com tamanho padronizado e sem responsividade nos quadrados */
+.board-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(10, 36px);
+    grid-template-rows: repeat(10, 36px);
+    gap: 3px;
+    background-color: #cbd5e1;
+    border: 3px solid #cbd5e1;
+    border-radius: 6px;
+    width: 393px;
+    height: 393px;
+    user-select: none;
+}
+
+/* Células com tamanho padrão fixo (36px x 36px) */
+.cell {
+    width: 36px;
+    height: 36px;
+    background-color: #e2e8f0;
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.1s ease;
+
+    /* Impedir seleção de texto ao clicar com o botão direito */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.cell:hover:not(.revealed) {
+    background-color: #cbd5e1;
+}
+
+.cell.revealed {
+    background-color: #ffffff;
+    cursor: default;
+}
+
+.cell.mine-exploded {
+    background-color: #fca5a5;
+}
+
+.cell.mine-revealed {
+    background-color: #fee2e2;
+}
+
+.mine-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+/* Cores numéricas para vizinhos */
+.cell[data-count="1"] { color: #2563eb; }
+.cell[data-count="2"] { color: #16a34a; }
+.cell[data-count="3"] { color: #dc2626; }
+.cell[data-count="4"] { color: #7c3aed; }
+.cell[data-count="5"] { color: #991b1b; }
+.cell[data-count="6"] { color: #0891b2; }
+.cell[data-count="7"] { color: #1e293b; }
+.cell[data-count="8"] { color: #64748b; }
+
+.game-controls {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Modal de Resultado (Vitória / Derrota) */
+.modal-overlay {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 23, 42, 0.65);
+    border-radius: 12px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 10;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 24px;
+    text-align: center;
+    width: 100%;
+    max-width: 320px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.result-image {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    margin: 0 auto 12px auto;
+    display: block;
+}
+
+.result-image.hidden {
+    display: none;
+}
+
+.result-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.result-title.win {
+    color: #16a34a;
+}
+
+.result-title.lose {
+    color: #dc2626;
+}
+
+.result-message {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin-bottom: 16px;
+}
+
+.result-stats {
+    background-color: #f8fafc;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    color: #334155;
+    margin-bottom: 20px;
+}

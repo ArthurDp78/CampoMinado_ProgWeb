@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campo Minado</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Tela Inicial -->
+        <div id="start-screen" class="screen active">
+            <h1 class="game-title">Campo Minado</h1>
+            <p class="game-subtitle">Revele todas as células sem encontrar nenhuma mina.</p>
+            
+            <button id="btn-start" class="btn btn-primary">JOGAR</button>
+
+            <div class="instructions-box">
+                <p><strong>Como jogar:</strong></p>
+                <p>• Clique com o <strong>botão esquerdo</strong> para revelar uma célula.</p>
+                <p>• Clique com o <strong>botão direito</strong> para marcar uma bandeira (🚩).</p>
+            </div>
+        </div>
+
+        <!-- Tela de Jogo -->
+        <div id="game-screen" class="screen">
+            <header class="game-header">
+                <h2 class="header-title">Campo Minado</h2>
+                <div class="hud">
+                    <div class="hud-item" title="Minas no tabuleiro">
+                        <span class="hud-icon">💣</span>
+                        <span id="mines-count">15</span>
+                    </div>
+                    <div class="hud-item" title="Bandeiras marcadas">
+                        <span class="hud-icon">🚩</span>
+                        <span id="flags-count">0</span>
+                    </div>
+                    <div class="hud-item" title="Tempo decorrido">
+                        <span class="hud-icon">⏱️</span>
+                        <span id="timer-display">00:00</span>
+                    </div>
+                </div>
+            </header>
+
+            <main class="board-wrapper">
+                <div id="board" class="game-board"></div>
+            </main>
+
+            <div class="game-controls">
+                <button id="btn-restart-game" class="btn btn-secondary">Reiniciar Partida</button>
+            </div>
+        </div>
+
+        <!-- Modal de Resultado (Vitória / Derrota) -->
+        <div id="result-modal" class="modal-overlay">
+            <div class="modal-card">
+                <img id="result-image" src="bomb-joypixels.webp" alt="Bomba" class="result-image hidden">
+                <h2 id="result-title" class="result-title">Você Venceu!</h2>
+                <p id="result-message" class="result-message">Todas as células seguras foram reveladas com sucesso.</p>
+                <div class="result-stats">
+                    <p>Tempo total: <strong id="result-time">01:25</strong></p>
+                </div>
+                <button id="btn-modal-restart" class="btn btn-primary">JOGAR NOVAMENTE</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
