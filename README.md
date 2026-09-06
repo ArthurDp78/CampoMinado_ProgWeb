@@ -58,7 +58,7 @@ O projeto foi desenvolvido utilizando **exclusivamente** tecnologias nativas da 
 
 Link da versão publicada:
 
-Link: PREENCHER
+Link: (https://arthurdp78.github.io/CampoMinado_ProgWeb/)
 
 ---
 
